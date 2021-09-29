@@ -106,7 +106,7 @@ export const Tablestyle = styled.table`
     td {
       border-bottom: 2px solid #fff;
       text-align: center;
-      padding: 12px 5px;
+      padding: 14px 5px;
     }
 
     th {

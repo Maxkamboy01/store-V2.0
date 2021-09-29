@@ -90,7 +90,11 @@ function ProductPage() {
           edit: false,
           data: {},
         });
+      
         e.target.reset();
+        setTimeout(() => {
+        setFormPopUp(false)
+        }, 500);
       })
 
       .catch();
@@ -157,7 +161,7 @@ function ProductPage() {
         </tr>
         {product?.map(({ name, price, description, id }, index) => (
           <tr key={id}>
-            <td>{index /* + 1 */}</td>
+            <td>{index +1}</td>
             <td style={{ borderRadius: "14px 0 0 0 " }}>{name}</td>
             <td>
               <span
