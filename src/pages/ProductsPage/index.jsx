@@ -53,9 +53,9 @@ function ProductPage() {
       .then((res) => {
         e.target.reset();
         getProduct();
-        // setTimeout(() => {
-          // setFormPopUp(false);
-        // }, 500);
+        setTimeout(() => {
+          setFormPopUp(false);
+        }, 500);
         console.log("post is working");
       })
       .catch((err) => {
