@@ -52,7 +52,14 @@ function ProductPage() {
       )
       .then((res) => {
         getProduct();
+
         e.target.reset();
+
+        setTimeout(() => {
+          setFormPopUp(false)
+        }, 500);
+
+
       })
       .catch();
   };
