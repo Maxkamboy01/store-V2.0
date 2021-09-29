@@ -52,11 +52,11 @@ function ProductPage() {
       )
       .then((res) => {
         e.target.reset();
-        setTimeout(() => {
-          setFormPopUp(false);
-        }, 500);
-        console.log("post is working");
         getProduct();
+        // setTimeout(() => {
+          // setFormPopUp(false);
+        // }, 500);
+        console.log("post is working");
       })
       .catch((err) => {
         console.log("error is working");
