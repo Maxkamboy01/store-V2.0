@@ -21,6 +21,8 @@ function ProductPage() {
     data: {},
   });
 
+  const [formPopUp, setFormPopUp] = useState(false);
+
   const getProduct = () => {
     axios
       .get("https://ibs-school.herokuapp.com/api/v1/for-developer/product")
@@ -36,9 +38,7 @@ function ProductPage() {
 
   const submitForm = (e) => {
     e.preventDefault();
-
     const { name, price, description } = e.target;
-
     const form = {
       name: name.value,
       price: price.value,
@@ -51,17 +51,16 @@ function ProductPage() {
         form
       )
       .then((res) => {
-        getProduct();
-
         e.target.reset();
-
         setTimeout(() => {
-          setFormPopUp(false)
+          setFormPopUp(false);
         }, 500);
-
-
+        console.log("post is working");
+        getProduct();
       })
-      .catch();
+      .catch((err) => {
+        console.log("error is working");
+      });
   };
 
   const deleteProduct = (id) => {
@@ -97,10 +96,10 @@ function ProductPage() {
           edit: false,
           data: {},
         });
-      
+
         e.target.reset();
         setTimeout(() => {
-        setFormPopUp(false)
+          setFormPopUp(false);
         }, 500);
       })
 
@@ -117,8 +116,6 @@ function ProductPage() {
       console.log("go sleeping right now");
     }
   };
-
-  const [formPopUp, setFormPopUp] = useState(false);
 
   return (
     <div onWheel={scrollEvent} style={{ minHeight: "150vh" }}>
@@ -168,8 +165,8 @@ function ProductPage() {
         </tr>
         {product?.map(({ name, price, description, id }, index) => (
           <tr key={id}>
-            <td>{index +1}</td>
-            <td style={{ borderRadius: "14px 0 0 0 " }}>{name}</td>
+            <td>{index + 1}</td>
+            <td>{name}</td>
             <td>
               <span
                 style={{
@@ -220,8 +217,9 @@ function ProductPage() {
       <AddProduct
         onClick={() => {
           setFormPopUp(true);
-          console.log("working");
+          console.log("popup is working");
         }}
+        
       >
         <Addproduct />
       </AddProduct>

@@ -134,7 +134,7 @@ export const Tablestyle = styled.table`
         min-width: 120px;
       }
       &:last-child {
-        min-width: 180px;
+        width: 180px;
       }
     }
     .edit {
