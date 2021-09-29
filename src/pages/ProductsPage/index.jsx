@@ -47,7 +47,7 @@ function ProductPage() {
 
     axios
       .post(
-        "https://ibs-school.herokuapp.com/api/v1/for-developer/product",
+        "https://ibs-school.herokuapp.com/api/v1/for-developer/product/",
         form
       )
       .then((res) => {
@@ -110,10 +110,9 @@ function ProductPage() {
   const scrollEvent = () => {
     if (window.pageYOffset > 100) {
       setNavbar(true);
-      console.log("it is working if is working");
+      console.log("it is working scroll event");
     } else {
       setNavbar(false);
-      console.log("go sleeping right now");
     }
   };
 
