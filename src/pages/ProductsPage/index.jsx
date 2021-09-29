@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {
   AddProduct,
+  DeleteBox,
+  DeleteConfirm,
   Fixed,
   Form,
   FormParent,
@@ -12,7 +14,7 @@ import { ReactComponent as EditIcon } from "../../assets/icons/edit-icon.svg";
 import { ReactComponent as DeleteIcon } from "../../assets/icons/delete-icon.svg";
 import { ReactComponent as NumberIcon } from "../../assets/icons/number-icon.svg";
 import { ReactComponent as Arrowup } from "../../assets/icons/arrow-up.svg";
-import { ReactComponent as Addproduct } from "../../assets/icons/add-product.svg";
+import { ReactComponent as Addproduct } from "../../assets/icons/addproduct.svg";
 
 function ProductPage() {
   const [product, setproduct] = useState([]);
@@ -22,6 +24,7 @@ function ProductPage() {
   });
 
   const [formPopUp, setFormPopUp] = useState(false);
+  const [deletePopUp, setdeletePopUp] = useState(false);
 
   const getProduct = () => {
     axios
@@ -51,8 +54,8 @@ function ProductPage() {
         form
       )
       .then((res) => {
-        e.target.reset();
         getProduct();
+        e.target.reset();
         setTimeout(() => {
           setFormPopUp(false);
         }, 500);
@@ -115,6 +118,7 @@ function ProductPage() {
       setNavbar(false);
     }
   };
+  const deleteID = product?.map(({ id }) => ({id}));
 
   return (
     <div onWheel={scrollEvent} style={{ minHeight: "150vh" }}>
@@ -199,7 +203,7 @@ function ProductPage() {
                 <div
                   className="editbox"
                   onClick={() => {
-                    deleteProduct(id);
+                    setdeletePopUp(true);
                   }}
                 >
                   <DeleteIcon />
@@ -218,10 +222,29 @@ function ProductPage() {
           setFormPopUp(true);
           console.log("popup is working");
         }}
-        
       >
         <Addproduct />
       </AddProduct>
+
+      <DeleteBox deleteValue={deletePopUp}>
+        <div onClick={() => setdeletePopUp(false)} className="bgblur" />
+        <DeleteConfirm>
+          <Togglestate onClick={() => setdeletePopUp(false)}>
+            <DeleteIcon />
+          </Togglestate>
+          <h1>Are you sure you want to delete this product</h1>
+          <button
+            onClick={() => {
+              deleteProduct(deleteID);
+              setTimeout(() => {
+                setdeletePopUp(false);
+              }, 500);
+            }}
+          >
+            delete
+          </button>
+        </DeleteConfirm>
+      </DeleteBox>
     </div>
   );
 }

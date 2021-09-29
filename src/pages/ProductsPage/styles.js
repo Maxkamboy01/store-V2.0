@@ -16,7 +16,6 @@ export const FormParent = styled.div`
     background-color: rgb(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
     position: relative;
-    
   }
 `;
 
@@ -210,7 +209,63 @@ export const AddProduct = styled.div`
   border-radius: 5px;
   cursor: pointer;
   svg {
-    width: 25px;
-    height: 25px;
+    width: 45px;
+    height: 45px;
+  }
+`;
+
+export const DeleteBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: ${({ deleteValue }) => (deleteValue == true ? "0" : "-100vh")};
+  left: 0;
+  z-index: 2000;
+  transition-duration: 0.4s;
+  .bgblur {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    position: relative;
+  }
+`;
+
+export const DeleteConfirm = styled.div`
+  width: 400px;
+  height: fit-content;
+  padding: 20px;
+  border: 2px solid #fff;
+  background-color: rgb(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  line-height: 30px;
+  h1 {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  button {
+    width: 140px;
+    height: 45px;
+    border: 2px solid #fff;
+    background: rgb(221, 214, 242);
+    background: linear-gradient(
+      35deg,
+      rgba(221, 214, 242, 1) 0%,
+      rgba(235, 193, 206, 1) 38%,
+      rgba(250, 172, 168, 1) 100%
+    );
+    color: #555;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-size: 17px;
+    margin: 14px auto;
   }
 `;
