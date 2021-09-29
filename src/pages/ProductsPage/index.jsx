@@ -47,7 +47,7 @@ function ProductPage() {
 
     axios
       .post(
-        "https://ibs-school.herokuapp.com/api/v1/for-developer/product",
+        "https://ibs-school.herokuapp.com/api/v1/for-developer/product/",
         form
       )
       .then((res) => {
