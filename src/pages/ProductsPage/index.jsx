@@ -118,13 +118,11 @@ function ProductPage() {
       setNavbar(false);
     }
   };
-  const deleteID = product?.map(({ id }) => ({ id }));
 
   return (
-    <div onWheel={scrollEvent} style={{ minHeight: "150vh" }}>
+    <div onWheel={scrollEvent} style={{ minHeight: "100vh" }}>
       <FormParent popUpToggle={formPopUp}>
         <div className="bgblur" onClick={() => setFormPopUp(false)} />
-
         <Form onSubmit={edit.edit ? updateForm : submitForm}>
           <Togglestate onClick={() => setFormPopUp(false)}>
             <DeleteIcon />

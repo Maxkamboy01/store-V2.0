@@ -99,6 +99,7 @@ export const Tablestyle = styled.table`
   color: white;
   line-height: 23px;
   margin-top: 50px;
+  border: 2px solid #fff;
   tr {
     padding: 0 10px;
     th,
@@ -123,12 +124,11 @@ export const Tablestyle = styled.table`
 
     td {
       &:nth-child(1) {
-        min-width: 40px;
+        width: 40px;
       }
       &:nth-child(2) {
-        min-width: 200px;
+        width: 200px;
       }
-
       &:nth-child(3) {
         min-width: 120px;
       }
