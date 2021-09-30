@@ -24,7 +24,7 @@ function ProductPage() {
   });
 
   const [formPopUp, setFormPopUp] = useState(false);
-  const [deletePopUp, setdeletePopUp] = useState(false);
+  const [deletePopUp, setdeletePopUp] = useState({ delete: false, data: {} });
 
   const getProduct = () => {
     axios
@@ -118,7 +118,7 @@ function ProductPage() {
       setNavbar(false);
     }
   };
-  const deleteID = product?.map(({ id }) => ({id}));
+  const deleteID = product?.map(({ id }) => ({ id }));
 
   return (
     <div onWheel={scrollEvent} style={{ minHeight: "150vh" }}>
@@ -203,7 +203,7 @@ function ProductPage() {
                 <div
                   className="editbox"
                   onClick={() => {
-                    setdeletePopUp(true);
+                    setdeletePopUp({ delete: true, data: { id } });
                   }}
                 >
                   <DeleteIcon />
@@ -226,18 +226,19 @@ function ProductPage() {
         <Addproduct />
       </AddProduct>
 
-      <DeleteBox deleteValue={deletePopUp}>
+      <DeleteBox deleteValue={deletePopUp.delete}>
         <div onClick={() => setdeletePopUp(false)} className="bgblur" />
         <DeleteConfirm>
           <Togglestate onClick={() => setdeletePopUp(false)}>
             <DeleteIcon />
           </Togglestate>
-          <h1>Are you sure you want to delete this product</h1>
+          <h2>😟😞😢😭</h2>
+          <h1>Are you sure you want to delete this product?😩</h1>
           <button
             onClick={() => {
-              deleteProduct(deleteID);
+              deleteProduct(deletePopUp.data.id);
               setTimeout(() => {
-                setdeletePopUp(false);
+                setdeletePopUp((setdeletePopUp.delete = false));
               }, 500);
             }}
           >
