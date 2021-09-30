@@ -218,7 +218,9 @@ function ProductPage() {
         <Arrowup />
       </Fixed>
       <AddProduct
-        onClick={() => {
+        onClick={(e) => {
+          e.target.reset()
+          
           setFormPopUp(true);
           console.log("popup is working");
         }}
